@@ -1,0 +1,165 @@
+---
+layout: default
+---
+
+<article class="project-single">
+    <div class="container">
+        <header class="project-header">
+            {% if page.featured_image %}
+            <div class="project-hero-image">
+                <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+            
+            <h1 class="project-title">{{ page.title }}</h1>
+            
+            <div class="project-metadata">
+                <div class="project-date">
+                    <span>📅</span>
+                    <span>{{ page.date | date: "%B %Y" }}</span>
+                </div>
+                
+                {% if page.collaborators %}
+                <div class="project-collaborators">
+                    <span>👥</span>
+                    <span>{{ page.collaborators | join: ", " }}</span>
+                </div>
+                {% endif %}
+                
+                {% if page.technologies %}
+                <div class="project-technologies">
+                    <span>🛠️</span>
+                    <div class="tech-list">
+                        {% for tech in page.technologies %}
+                        <span class="tech-badge">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </header>
+
+        <div class="project-content">
+            {{ content }}
+        </div>
+
+        <footer class="project-footer">
+            <div class="project-navigation">
+                <a href="{{ '/projects' | relative_url }}" class="back-to-projects">← Back to Projects</a>
+            </div>
+        </footer>
+    </div>
+</article>
+
+<style>
+.project-single {
+    padding: 3rem 0;
+}
+
+.project-header {
+    margin-bottom: 3rem;
+}
+
+.project-hero-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.project-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-title {
+    font-size: 3rem;
+    color: var(--dark-green);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.project-metadata {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-date,
+.project-collaborators,
+.project-technologies {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-date > span:first-child,
+.project-collaborators > span:first-child,
+.project-technologies > span:first-child {
+    font-size: 1.5rem;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-badge {
+    background: var(--primary-green);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.project-content {
+    background: white;
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.project-content h2 {
+    color: var(--dark-green);
+    margin: 2rem 0 1rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--primary-green);
+}
+
+.project-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin: 2rem 0;
+}
+
+.project-footer {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.back-to-projects {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: var(--primary-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+}
+
+.back-to-projects:hover {
+    background: var(--dark-green);
+}
+</style>

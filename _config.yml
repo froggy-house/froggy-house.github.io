@@ -1,0 +1,85 @@
+# Site settings
+title: The Froggy House
+tagline: A Hopping Good Time with Our Frog Family! 🐸
+description: Welcome to our pond! We're a froggy family sharing our adventures and creations.
+author: The Froggy Family
+email: 
+url: "https://froggy-house.github.io"
+baseurl: ""
+
+# Family members
+family:
+  daddy_frog:
+    name: Daddy Frog
+    emoji: 🐸
+    color: "#2E7D32"
+    description: "The wise frog who loves to code and create"
+  mommy_frog:
+    name: Mommy Frog
+    emoji: 🌸
+    color: "#E91E63"
+    description: "The caring frog who keeps our lily pad organized"
+  smart_frog:
+    name: Smart Frog
+    emoji: 🎓
+    color: "#1976D2"
+    description: "The clever young frog who loves to learn"
+  robot_frog:
+    name: Baby Robot Frog
+    emoji: 🤖
+    color: "#9C27B0"
+    description: "The tech-savvy little frog with circuits and charm"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:year/:month/:day/:title/
+
+# Pagination
+paginate: 6
+paginate_path: "/page/:num/"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+  family_moments:
+    output: true
+    permalink: /moments/:path/
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .github
+  - README.md
+  - CONTRIBUTING.md
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "The Froggy Family"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "family_moments"
+    values:
+      layout: "moment"

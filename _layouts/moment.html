@@ -1,0 +1,114 @@
+---
+layout: default
+---
+
+<article class="moment-single">
+    <div class="container">
+        <header class="moment-header">
+            <h1 class="moment-title">{{ page.title }}</h1>
+            <div class="moment-meta">
+                <time>{{ page.date | date: "%B %d, %Y" }}</time>
+                {% if page.family_members %}
+                <div class="moment-participants">
+                    <span>With:</span>
+                    {% for member in page.family_members %}
+                    <span class="participant">{{ member }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </header>
+
+        {% if page.photo %}
+        <div class="moment-photo-large">
+            <img src="{{ page.photo | relative_url }}" alt="{{ page.title }}">
+        </div>
+        {% endif %}
+
+        <div class="moment-story">
+            {{ content }}
+        </div>
+
+        <footer class="moment-footer">
+            <a href="{{ '/moments' | relative_url }}" class="back-link">← Back to Family Moments</a>
+        </footer>
+    </div>
+</article>
+
+<style>
+.moment-single {
+    padding: 3rem 0;
+}
+
+.moment-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.moment-title {
+    font-size: 2.5rem;
+    color: var(--dark-green);
+    margin-bottom: 1rem;
+}
+
+.moment-meta {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.moment-participants {
+    margin-top: 0.5rem;
+}
+
+.participant {
+    background: var(--lily-pink);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin: 0 0.25rem;
+}
+
+.moment-photo-large {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.moment-photo-large img {
+    width: 100%;
+    height: auto;
+}
+
+.moment-story {
+    background: white;
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.moment-footer {
+    text-align: center;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: var(--primary-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+}
+
+.back-link:hover {
+    background: var(--dark-green);
+}
+</style>

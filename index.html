@@ -1,11 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>Our Family Projects</title>
-</head>
-<body>
-  <h1>Welcome to Our Family Projects</h1>
-  <p>This is where Daddy Frog 🐸 and Smart Frog 🐸 share their creations!</p>
-</body>
-</html>
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Welcome to The Froggy House! 🐸</h1>
+            <p class="tagline">{{ site.tagline }}</p>
+            
+            <div class="family-portrait">
+                <img src="{{ '/assets/images/family.png' | relative_url }}" alt="The Froggy Family" />
+            </div>
+            
+            <p>{{ site.description }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="family-members">
+    <div class="container">
+        <h2 class="section-title">Meet Our Froggy Family</h2>
+        <div class="family-grid">
+            {% for member in site.family %}
+            <div class="family-card">
+                <div class="member-emoji">{{ member[1].emoji }}</div>
+                <h3 class="member-name">{{ member[1].name }}</h3>
+                <p class="member-description">{{ member[1].description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="recent-posts">
+    <div class="container">
+        <h2 class="section-title">Recent Adventures & Projects</h2>
+        <div class="posts-grid">
+            {% for post in site.posts limit:6 %}
+            <article class="post-card">
+                <div class="post-header">
+                    <span class="post-category">{{ post.categories | first | default: "Project" }}</span>
+                    <h3 class="post-title">{{ post.title }}</h3>
+                </div>
+                <div class="post-body">
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+                    <div class="post-meta">
+                        <span class="post-author">
+                            <span>{{ post.author_emoji | default: "🐸" }}</span>
+                            <span>{{ post.author | default: site.author }}</span>
+                        </span>
+                        <time>{{ post.date | date: "%B %d, %Y" }}</time>
+                    </div>
+                    <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        
+        {% if site.posts.size == 0 %}
+        <div class="text-center mt-3">
+            <p>No posts yet! Check out our <a href="{{ '/how-to' | relative_url }}">guide</a> to start sharing family projects.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
