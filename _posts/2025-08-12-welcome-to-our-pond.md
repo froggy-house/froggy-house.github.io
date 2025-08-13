@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Welcome to Our Pond!"
-date: 2024-01-01
+date: 2025-08-12
 categories: [Announcement]
 tags: [family, introduction, welcome]
 author: "Daddy Frog"
